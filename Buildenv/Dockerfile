@@ -1,5 +1,6 @@
-FROM archlinux:latest
+FROM voidlinux:latest
 
-RUN pacman -Syu --noconfirm \
+RUN xbps-install -Syu --noconfirm \
     base-devel \
-    mingw-w64-gcc
+    cross-x86_64-w64-mingw32 \
+	cmake
