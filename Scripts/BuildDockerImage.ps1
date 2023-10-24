@@ -1,1 +1,0 @@
-docker build ../buildenv -t subzeronitro/vimdows
