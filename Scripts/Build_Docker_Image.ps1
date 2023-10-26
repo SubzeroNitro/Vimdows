@@ -1,3 +1,3 @@
-docker build ../buildenv -t vimdows_buildenv
+docker build ../buildenv -t vimdows-buildenv
 
 pause
