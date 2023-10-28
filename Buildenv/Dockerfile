@@ -1,6 +1,7 @@
-FROM archlinux:latest
+FROM alpine:latest
 
-RUN pacman -Syu --noconfirm \
-    base-devel \
+RUN apk -U upgrade
+RUN apk -Ui add
+    build-base\
     mingw-w64-gcc \
     cmake
