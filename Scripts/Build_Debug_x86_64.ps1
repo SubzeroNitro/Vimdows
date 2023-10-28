@@ -1,23 +1,17 @@
 $ImageName = "vimdows-buildenv"
-$DockerfilePath = "../buildenv"
+$ContainerName = "Vimdows-Build"
 
-$images = docker images
-$buildImage = true
+$RootDir = [IO.Path]::GetFullPath("..\")
+$TargetDir = "/dev/buildenv"
+$DockerfilePath = $RootDir + "Buildenv"
 
-for ($i = 1; $i -le $images.Count; $i++)
-{
-    $imageName = ($images[$i] -split " ")[0]
+$Images = docker images $ImageName
 
-    if ($imageName -eq $ImageName)
-    {
-        $buildImage = false
-        break
-    }
-}
-
-if ($buildImage)
+if ($Images.Count -le 1)
 {
     docker build $DockerfilePath -t $ImageName
 }
 
-docker run -it --rm --name=Vimdows --mount type=bind, source=${PWD}, target=/Source vimdows_buildenv
+docker run -it --rm --name=$ContainerName --mount type=bind,source=$RootDir,target=$TargetDir $ImageName
+
+pause
