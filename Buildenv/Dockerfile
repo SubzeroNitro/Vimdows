@@ -1,16 +1,18 @@
-FROM alpine:latest
+FROM debian:latest
 
-RUN apk -U upgrade
-RUN apk -Ui add \
-    build-base\
-    mingw-w64-gcc \
-    wget
+ARG PREMAKE_VERSION=5.0.0
+ARG PREMAKE_PATH="/bin/premake"
 
-RUN cd dev && \
-    mkdir premake && \
-    cd premake && \
-    wget "https://github.com/premake/premake-core/releases/download/v5.0.0-beta2/premake-5.0.0-beta2-linux.tar.gz" && \
-    tar xzf premake-5.0.0-beta2-linux.tar.gz && \
-    rm premake-5.0.0-beta2-linux.tar.gz
+ENV PATH="$PATH:${PREMAKE_PATH}"
 
-WORKDIR "dev/host"
+RUN apt update && \
+    apt upgrade -y && \
+    apt install -y build-essential mingw-w64 wget
+
+WORKDIR ${PREMAKE_PATH}
+
+RUN wget -q https://github.com/premake/premake-core/releases/download/v${PREMAKE_VERSION}-beta2/premake-${PREMAKE_VERSION}-beta2-linux.tar.gz && \
+    tar -xzf premake-${PREMAKE_VERSION}-beta2-linux.tar.gz && \
+    rm premake-${PREMAKE_VERSION}-beta2-linux.tar.gz
+
+WORKDIR "/root/host"
