@@ -1,6 +1,4 @@
 $Action = $args[0]
-$Architecture = $args[1]
-$System = $args[2]
 $Configuration = $args[3]
 $Platform = $args[4]
 
@@ -17,6 +15,6 @@ docker image prune --force
 docker build $DockerfilePath -t $ImageName
 docker run -it --rm --name=$ContainerName --mount type=bind,source=$RootDir,target=$TargetDir $ImageName
 
-premake5 --os=$System gmake2
+premake5 gmake2
 
 pause
