@@ -5,7 +5,6 @@ patchVersion = 0
 outputDir = "build/%{cfg.buildcfg}/%{cfg.platform}"
 
 workspace "Vimdows"
-	system "windows"
 	architecture "x86_64"
 
 	configurations
@@ -13,6 +12,14 @@ workspace "Vimdows"
 		"Debug",
 		"Release"
 	}
+	
+	platforms
+	{
+		"Windows"
+	}
+	
+	filter "platforms:Windows"
+		system "windows"
 	
 project "Vimdows"
 	kind "WindowedApp"
