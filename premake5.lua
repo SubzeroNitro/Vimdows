@@ -2,6 +2,8 @@ majorVersion = 1
 minorVersion = 0
 patchVersion = 0
 
+outputDir = "build/%{cfg.buildcfg}/%{cfg.platform}"
+
 workspace "Vimdows"
 	system "windows"
 	architecture "x86_64"
@@ -12,8 +14,6 @@ workspace "Vimdows"
 		"Release"
 	}
 	
-outputDir = "build/%{cfg.config}/%{cfg.platform}"		
-
 project "Vimdows"
 	kind "WindowedApp"
 	language "C++"

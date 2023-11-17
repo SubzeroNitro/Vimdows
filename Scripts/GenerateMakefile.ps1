@@ -13,8 +13,10 @@ $BuildDir = "${RootDir}/Build/${Architecture}/${System}/${Configuration}/${Platf
 
 docker image prune --force
 docker build $DockerfilePath -t $ImageName
-docker run -it --rm --name=$ContainerName --mount type=bind,source=$RootDir,target=$TargetDir $ImageName
-
-premake5 gmake2
+docker run --rm \
+	--name=$ContainerName \
+	--mount type=bind,source=$RootDir,target=$TargetDir \
+	$ImageName \
+	-command premake5 gmake2
 
 pause
