@@ -1,5 +1,5 @@
 @echo off
 
-Powershell ./GenerateMakefile.ps1 build debug windows
+Powershell ./GenerateMakefile.ps1 all debug windows
 
 pause

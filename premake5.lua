@@ -32,7 +32,7 @@ project "Vimdows"
 	targetdir "%{outputDir}/%{prj.name}"
 	objdir "%{outputDir}/obj/%{prj.name}"
 	
-	pchheader "${prj.name}pch.hpp"
+	pchheader "%{prj.name}PCH.hpp"
 	
 	files
 	{
