@@ -1,3 +1,5 @@
+include "mingw.lua"
+
 majorVersion = 1
 minorVersion = 0
 patchVersion = 0
@@ -22,13 +24,15 @@ workspace "Vimdows"
 		system "windows"
 	
 project "Vimdows"
-	kind "WindowedApp"
+	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++20"
 	staticruntime "On"
 	systemversion "latest"
 	characterset "Unicode"
 	
+	toolset "mingw"
+
 	targetdir "%{outputDir}/%{prj.name}"
 	objdir "%{outputDir}/obj/%{prj.name}"
 	
